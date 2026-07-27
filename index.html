@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ============================================================
+       JOLERO MEDIA — holding page for joleromedia.com
+
+       Temporary "launching soon" page. Single self-contained file
+       (CSS inlined) so it loads instantly.
+
+       WHEN THE FULL SITE IS READY: this repo's custom domain is
+       removed and joleromedia.com is pointed at the main site repo
+       (OderoProductions/jolero-media) instead. Nothing here needs
+       deleting — it just stops being the live page.
+
+       EDIT: launch wording ....... search "LAUNCH LINE"
+             contact details ...... search "CONTACT"
+       ============================================================ -->
+
+  <title>Jolero Media — Sports Photography &amp; Videography | Worthing, West Sussex</title>
+  <meta name="description" content="Jolero Media is a sports creative agency in Worthing, West Sussex. Photo and video for athletes, clubs and sports brands. Site launching soon — follow @joleromedia.">
+  <link rel="canonical" href="https://joleromedia.com/">
+  <meta name="theme-color" content="#0A0A0A">
+
+  <!-- Open Graph — this is what shows when the link is shared in an Instagram DM -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Jolero Media">
+  <meta property="og:title" content="Jolero Media — Sports Photography &amp; Videography">
+  <meta property="og:description" content="Journeys captured. Outcomes remembered. Sports content for athletes, clubs and brands across Worthing &amp; the South Coast. Launching soon.">
+  <meta property="og:url" content="https://joleromedia.com/">
+  <!-- TODO: add a 1200×630 JPG at assets/og.jpg (strong action shot + logo) and
+       uncomment — until then shares show a plain text card. -->
+  <!-- <meta property="og:image" content="https://joleromedia.com/assets/og.jpg"> -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Jolero Media",
+    "slogan": "Journeys captured. Outcomes remembered.",
+    "description": "Sports photography and videography agency for athletes, teams and brands.",
+    "url": "https://joleromedia.com/",
+    "email": "info@joleromedia.com",
+    "areaServed": "Worthing, West Sussex and the South Coast, UK",
+    "address": { "@type": "PostalAddress", "addressLocality": "Worthing", "addressRegion": "West Sussex", "addressCountry": "GB" },
+    "sameAs": ["https://instagram.com/joleromedia"]
+  }
+  </script>
+
+  <style>
+    :root {
+      --accent: #FF3B30;
+      --accent-ink: #0A0A0A;
+      --ink: #0A0A0A;
+      --paper: #FFFFFF;
+      --paper-60: rgba(255, 255, 255, 0.64);
+      --paper-40: rgba(255, 255, 255, 0.50);
+      --line: rgba(255, 255, 255, 0.10);
+      --font-display: "Anton", "Arial Narrow", sans-serif;
+      --font-body: "Inter", system-ui, -apple-system, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --gutter: clamp(20px, 5vw, 48px);
+      --radius: 2px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100svh;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
+      display: flex;
+      flex-direction: column;
+    }
+
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; }
+
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: var(--radius); }
+    ::selection { background: var(--accent); color: var(--accent-ink); }
+
+    /* ---- ambient backdrop: same stadium-light feel as the main site ---- */
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(120% 90% at 50% 40%, #1A1B1F 0%, #101114 55%, #0A0A0A 100%);
+      overflow: hidden;
+    }
+    .backdrop::before,
+    .backdrop::after {
+      content: "";
+      position: absolute;
+      top: -20%;
+      width: 40%;
+      height: 150%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0));
+      transform: rotate(14deg);
+    }
+    .backdrop::before { left: 8%; }
+    .backdrop::after { right: 6%; transform: rotate(-16deg); opacity: 0.7; }
+
+    /* ---- viewfinder chrome (brand signature) ---- */
+    /* Corner brackets only — the readout lives in the footer so nothing
+       fixed can collide with flowed content. */
+    .vf {
+      position: fixed;
+      inset: clamp(14px, 2.4vw, 26px);
+      pointer-events: none;
+    }
+    .vf-corner { position: absolute; width: 18px; height: 18px; border: 1px solid rgba(255,255,255,0.30); }
+    .vf-corner.tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+    .vf-corner.tr { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+    .vf-corner.bl { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+    .vf-corner.br { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+    .rec-dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: rec-pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes rec-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+    /* ---- layout ---- */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(56px, 9vh, 96px) var(--gutter) clamp(40px, 6vh, 72px);
+      max-width: 1100px;
+      margin-inline: auto;
+      width: 100%;
+    }
+
+    .wordmark {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+    }
+    /* LOGO SWAP: put <img src="assets/logo.svg" alt="Jolero Media"> inside
+       .wordmark and it sizes itself. */
+    .wordmark img { height: 1.6em; width: auto; }
+    .wordmark-dot {
+      display: inline-block;
+      width: 0.28em; height: 0.28em;
+      margin-inline: 0.14em;
+      border-radius: 50%;
+      background: var(--accent);
+      vertical-align: 0.29em;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: clamp(28px, 5vh, 56px);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--paper-60);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      text-transform: uppercase;
+      line-height: 0.98;
+      letter-spacing: 0.005em;
+      /* Height-aware as well as width-aware: the headline is four lines, so on
+         short/wide screens vh has to win or the page pushes past the fold. */
+      font-size: clamp(2.2rem, min(8.5vw, 8vh), 5.25rem);
+      margin-top: 16px;
+      max-width: 15ch;
+    }
+    .dot { color: var(--accent); }
+
+    .lede {
+      margin-top: 26px;
+      max-width: 46ch;
+      color: var(--paper-60);
+      font-size: clamp(1rem, 1.6vw, 1.12rem);
+    }
+
+    .ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 12px 26px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .btn-primary { background: var(--accent); color: var(--accent-ink); }
+    .btn-primary:hover { background: #FF574D; }
+    .btn-ghost { border: 1px solid rgba(255,255,255,0.28); color: var(--paper); }
+    .btn-ghost:hover { border-color: var(--paper); background: rgba(255,255,255,0.06); }
+    .btn svg { width: 19px; height: 19px; flex: none; }
+
+    /* Footer doubles as the viewfinder readout. Bottom padding clears the
+       corner brackets (which sit up to ~44px off the edge). */
+    footer {
+      padding: 22px var(--gutter) clamp(56px, 8vh, 72px);
+      max-width: 1100px;
+      margin-inline: auto;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--paper-40);
+    }
+    footer .rec { display: inline-flex; align-items: center; gap: 8px; font-variant-numeric: tabular-nums; }
+    footer .sep { margin-left: auto; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rec-dot { animation: none; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <div class="vf" aria-hidden="true">
+    <span class="vf-corner tl"></span><span class="vf-corner tr"></span>
+    <span class="vf-corner bl"></span><span class="vf-corner br"></span>
+  </div>
+
+  <main>
+    <a class="wordmark" href="/" aria-label="Jolero Media">JOLERO<span class="wordmark-dot" aria-hidden="true"></span>MEDIA</a>
+
+    <!-- LAUNCH LINE -->
+    <p class="status">Sports creative agency · Site launching soon</p>
+
+    <h1>Journeys captured<span class="dot">.</span> Outcomes remembered<span class="dot">.</span></h1>
+
+    <p class="lede">
+      Photo and video for athletes, clubs and sports brands across Worthing
+      &amp; the South Coast. The full site is on its way — until then, the work
+      lives on Instagram.
+    </p>
+
+    <!-- CONTACT -->
+    <div class="ctas">
+      <a class="btn btn-primary" href="https://instagram.com/joleromedia" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+        Follow @joleromedia
+      </a>
+      <a class="btn btn-ghost" href="mailto:info@joleromedia.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        Enquire
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <span class="rec" aria-hidden="true"><span class="rec-dot"></span>REC&ensp;<span id="timecode">00:00:00:00</span></span>
+    <span>Worthing · West Sussex</span>
+    <span class="sep">© 2026 Jolero Media</span>
+  </footer>
+
+  <script>
+    // Live timecode in the viewfinder chrome — the one moving part.
+    (function () {
+      var tc = document.getElementById("timecode");
+      if (!tc || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var frames = 0;
+      var pad = function (n) { return String(n).padStart(2, "0"); };
+      setInterval(function () {
+        frames = (frames + 1) % (24 * 60 * 60 * 24);
+        tc.textContent =
+          pad(Math.floor(frames / (24 * 60 * 60))) + ":" +
+          pad(Math.floor(frames / (24 * 60)) % 60) + ":" +
+          pad(Math.floor(frames / 24) % 60) + ":" +
+          pad(frames % 24);
+      }, 1000 / 24);
+    })();
+  </script>
+</body>
+</html>
