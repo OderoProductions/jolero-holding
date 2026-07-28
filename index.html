@@ -157,10 +157,10 @@
       white-space: nowrap;
       display: inline-flex;
       align-items: center;
+      gap: 0.46em;
     }
-    /* LOGO SWAP: put <img src="assets/logo.svg" alt="Jolero Media"> inside
-       .wordmark and it sizes itself. */
-    .wordmark img { height: 1.6em; width: auto; }
+    .wordmark .logo-mark { height: 1.62em; width: auto; flex: none; }
+    .wordmark-text { line-height: 1; }
     .wordmark-dot {
       display: inline-block;
       width: 0.28em; height: 0.28em;
@@ -262,7 +262,7 @@
   </div>
 
   <main>
-    <a class="wordmark" href="/" aria-label="Jolero Media">JOLERO<span class="wordmark-dot" aria-hidden="true"></span>MEDIA</a>
+    <a class="wordmark" href="/" aria-label="Jolero Media"><img class="logo-mark" src="assets/logo.svg" alt="" width="40" height="40"><span class="wordmark-text">JOLERO MEDIA</span></a>
 
     <!-- LAUNCH LINE -->
     <p class="status">Sports creative agency · Site launching soon</p>
