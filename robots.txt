@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://joleromedia.com/sitemap.xml
