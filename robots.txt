@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /proposals/
 Allow: /
 
 Sitemap: https://joleromedia.com/sitemap.xml
