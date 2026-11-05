@@ -41,8 +41,6 @@
   <!-- <meta property="og:image" content="https://joleromedia.com/assets/og.jpg"> -->
   <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/anton-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
 
@@ -64,56 +62,67 @@
   </script>
 
   <script>/* theme before first paint: saved choice, else OS, else dark */try{var s=localStorage.getItem("jolero_theme");if(s?s==="light":matchMedia("(prefers-color-scheme: light)").matches)document.documentElement.classList.add("theme-light")}catch(e){}</script>
+  <link rel="preload" href="assets/fonts/poppins/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins/Poppins-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
   <style>
-    /* ---------- Fonts (self-hosted) ----------
-       Served from our own domain rather than Google's, so no visitor IP is
-       handed to a third party just to render type — and one less DNS lookup
-       and TLS handshake before first paint.
+    /* Fonts: Poppins, self-hosted. SIL OFL 1.1, see assets/fonts/OFL.txt. */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('assets/fonts/poppins/Poppins-Light.woff2') format('woff2');
+}
 
-       Inter is the VARIABLE font: one 47 KB file covers every weight we use
-       (400-700), against 189 KB for the four static cuts it replaces.
-       unicode-range means latin-ext only downloads if a page actually uses
-       those characters, which for an English site is essentially never.
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/poppins/Poppins-Regular.woff2') format('woff2');
+}
 
-       Both faces are SIL Open Font License 1.1 — see assets/fonts/OFL.txt. */
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/poppins/Poppins-Italic.woff2') format('woff2');
+}
 
-    @font-face {
-      font-family: 'Anton';
-      font-style: normal;
-      font-weight: 400;
-      font-display: swap;
-      src: url('assets/fonts/anton-400-latin.woff2') format('woff2');
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('assets/fonts/poppins/Poppins-Medium.woff2') format('woff2');
+}
 
-    @font-face {
-      font-family: 'Anton';
-      font-style: normal;
-      font-weight: 400;
-      font-display: swap;
-      src: url('assets/fonts/anton-400-latin-ext.woff2') format('woff2');
-      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-    }
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('assets/fonts/poppins/Poppins-SemiBold.woff2') format('woff2');
+}
 
-    @font-face {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 100 900;
-      font-display: swap;
-      src: url('assets/fonts/inter-var-latin.woff2') format('woff2');
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('assets/fonts/poppins/Poppins-Bold.woff2') format('woff2');
+}
 
-    @font-face {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 100 900;
-      font-display: swap;
-      src: url('assets/fonts/inter-var-latin-ext.woff2') format('woff2');
-      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-    }
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('assets/fonts/poppins/Poppins-ExtraBold.woff2') format('woff2');
+}
 
-    :root {
+:root {
       color-scheme: dark;
       --accent: #FF3B30;
       --accent-ink: #0A0A0A;
@@ -129,11 +138,11 @@
       --corner: rgba(255, 255, 255, 0.30);
       --ghost-border: rgba(255, 255, 255, 0.28);
       --soft: rgba(255, 255, 255, 0.06);
-      --font-display: "Anton", "Arial Narrow", sans-serif;
-      --font-body: "Inter", system-ui, -apple-system, sans-serif;
-      --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --font-display: "Poppins", "Helvetica Neue", Arial, sans-serif;
+      --font-body: "Poppins", "Helvetica Neue", Arial, sans-serif;
+      --font-mono: "Poppins", "Helvetica Neue", Arial, sans-serif;
       --gutter: clamp(20px, 5vw, 48px);
-      --radius: 2px;
+      --radius: 8px;
     }
 
     /* Light mode: same layout, inverted surfaces. Applied by the head
@@ -348,6 +357,12 @@
       .rec-dot { animation: none; }
       *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
     }
+  
+    /* Poppins type system */
+    h1 { font-weight: 800; font-size: clamp(2.1rem, 7vw, 5rem); line-height: 1.06; letter-spacing: -0.02em; }
+    .wordmark { font-weight: 700; font-size: clamp(1rem, 1.8vw, 1.1rem); letter-spacing: 0.01em; }
+    .status, footer { font-weight: 300; }
+    .btn { font-weight: 700; }
   </style>
 </head>
 <body>
