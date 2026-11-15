@@ -19,10 +19,24 @@
   }
 })();
 
-/* Holding page: with reduced motion on, the background loop stays on its
-   first frame instead of playing. */
+/* Holding page background loop. With reduced motion on it stays on its
+   first frame. Otherwise: phones can refuse to autoplay (an iPhone in Low
+   Power Mode does, even muted), so ask again now and once more on the
+   first touch or scroll, which counts as the visitor's go-ahead. */
 (function () {
-  if (!window.matchMedia || !matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   var v = document.querySelector(".bg video");
-  if (v) { v.removeAttribute("autoplay"); v.pause(); }
+  if (!v) return;
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    v.removeAttribute("autoplay");
+    v.pause();
+    return;
+  }
+  var play = function () {
+    var p = v.play();
+    if (p && p.catch) p.catch(function () {});
+  };
+  play();
+  ["touchstart", "scroll", "click"].forEach(function (ev) {
+    window.addEventListener(ev, function () { if (v.paused) play(); }, { once: true, passive: true });
+  });
 })();
