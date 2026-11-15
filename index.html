@@ -168,8 +168,9 @@
     ::selection { background: var(--accent); color: var(--accent-ink); }
 
     /* ---- background: the same black-and-white loop as the main site's
-       hero, under a dark scrim so the type always reads. The poster shows
-       first and is all anyone with reduced motion sees. ---- */
+       hero, under a dark scrim so the type always reads. No separate still
+       underneath (it showed through as a frozen frame); the video's own
+       poster covers the moment before it plays. ---- */
     .bg {
       position: fixed;
       inset: 0;
@@ -177,7 +178,7 @@
       background: var(--ink);
       overflow: hidden;
     }
-    .bg img, .bg video {
+    .bg video {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -191,7 +192,6 @@
       inset: 0;
       background: linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.45) 45%, rgba(10, 10, 10, 0.55) 100%);
     }
-    @media (prefers-reduced-motion: reduce) { .bg video { display: none; } }
 
     /* ---- layout ---- */
     main {
@@ -338,7 +338,6 @@
 <body>
 
   <div class="bg" aria-hidden="true">
-    <img src="assets/hero-poster.jpg" alt="" width="1280" height="720" fetchpriority="high">
     <video autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
       <source src="assets/hero-loop.mp4" type="video/mp4">
     </video>
@@ -377,6 +376,6 @@
     <span>© 2026 Jolero Media</span>
   </footer>
 
-  <script src="theme.js?v=20261114"></script>
+  <script src="theme.js?v=20261115"></script>
 </body>
 </html>

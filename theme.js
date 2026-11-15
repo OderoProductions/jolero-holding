@@ -18,3 +18,11 @@
     metas[i].removeAttribute("media");
   }
 })();
+
+/* Holding page: with reduced motion on, the background loop stays on its
+   first frame instead of playing. */
+(function () {
+  if (!window.matchMedia || !matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var v = document.querySelector(".bg video");
+  if (v) { v.removeAttribute("autoplay"); v.pause(); }
+})();
